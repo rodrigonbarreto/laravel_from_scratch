@@ -25,7 +25,7 @@
 
 				<label class="label" for="body">Content</label>
 				<p class="control">
-					<textarea class="textarea {{ $errors->has('title') ? 'is-danger' : '' }}" name="content" id="body"></textarea>
+					<textarea class="textarea {{ $errors->has('body') ? 'is-danger' : '' }}" name="body" id="body"></textarea>
 
 					@if($errors->has('body'))
 
@@ -35,12 +35,8 @@
 				</p>
 
 				<p class="control">
-					<input class="flatpickr input" type="text" placeholder="Select Date.." name="date">
-				</p>
-
-				<p class="control">
 					<button type="submit" class="button is-primary">Publish</button>
-				</p>				
+				</p>
 			</tab>
 
 			<tab name="About Our Culture">

@@ -16,9 +16,7 @@
 			<span class="icon is-small">
 			    <i class="fa fa-warning"></i>
 			</span>
-
 		 	<span class="help is-danger">There are errors in this field</span>
-
 		  @endif
 		</p>
 
