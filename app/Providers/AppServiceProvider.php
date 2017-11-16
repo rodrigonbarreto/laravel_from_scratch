@@ -2,9 +2,14 @@
 
 namespace App\Providers;
 
+use function foo\func;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class AppServiceProvider
+ * @package App\Providers
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -15,6 +20,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {   
         Schema::defaultStringLength(191);
+        view()->composer('partials.sidebar', function($view) {
+
+            $view->with('archives', \App\Post::archives());
+        });
+
     }
 
     /**
