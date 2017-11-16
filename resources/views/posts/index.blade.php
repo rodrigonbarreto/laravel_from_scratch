@@ -12,6 +12,6 @@
 
 	@endforeach
 
-	{{ $posts->links() }}
+	{{--{{ $posts->links() }}--}}
 
 @endsection

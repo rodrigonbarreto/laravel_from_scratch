@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 
+/**
+ * Class PostsController
+ * @package App\Http\Controllers
+ */
 class PostsController extends Controller
 {
 	public function __construct()
@@ -15,11 +19,20 @@ class PostsController extends Controller
 		]);
 	}
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-    	$posts = Post::latest()->paginate(3);
+    	$posts = Post::latest()->filter(\request(['month', 'year']))->get();
 
-    	return view('posts.index', compact('posts'));
+    	$archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+        ->groupBy('year', 'month')
+        ->orderByRaw('min(created_at) asc')
+        ->get()
+        ->toArray();
+
+    	return view('posts.index', compact('posts', 'archives'));
     }
 
     public function create()
