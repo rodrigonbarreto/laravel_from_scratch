@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Repositories\Posts;
 use Illuminate\Http\Request;
 
 /**
@@ -21,10 +22,12 @@ class PostsController extends Controller
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
+     * @param Posts $posts
      */
-    public function index()
+    public function index(Posts $posts)
     {
-    	$posts = Post::latest()->filter(\request(['month', 'year']))->get();
+        $posts = $posts->filter(\request(['month', 'year']));
 
     	return view('posts.index', compact('posts'));
     }
@@ -34,6 +37,10 @@ class PostsController extends Controller
     	return view('posts.create');
     }
 
+    /**
+     * @param Post $post
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(Post $post)
     {
     	return view('posts.show', compact('post'));
@@ -41,7 +48,6 @@ class PostsController extends Controller
 
     public function store()
     {
-
     	// Validation
     	$this->validate(request(), [
     		'title' => 'required',
