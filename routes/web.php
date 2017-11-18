@@ -12,8 +12,6 @@
 //option 3 -> I prefer this and let's to use more Stripe::class it's a good practice
 $stripe = resolve(\App\Billing\Stripe::class);
 
-dd($stripe);
-
 Route::get('/', 'PostsController@index')->name('home');
 Route::get('posts/create', 'PostsController@create');
 Route::post('posts', 'PostsController@store');
