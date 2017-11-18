@@ -5,6 +5,7 @@ namespace App\Providers;
 use function foo\func;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Billing\Stripe;
 
 /**
  * Class AppServiceProvider
@@ -34,6 +35,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+        // App::bind it's ok, but in this case let's use singleton
+        // you can use \App::singleton  but $this->app-> it's better to work with provider
+
+        $this->app->singleton(Stripe::class, function (){
+            return new Stripe(config('services.stripe.secret'));
+        });
     }
 }

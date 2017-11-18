@@ -3,10 +3,7 @@
 //get var from config/service -> config();
 //dd(config('services.stripe.secret'));
 
-// App::bind it's ok, but in this case let's use singleton
-App::singleton('App\Billing\Stripe', function (){
-   return new \App\Billing\Stripe(config('services.stripe.secret'));
-});
+
 // option1 for service container
 //$stripe = App::make('App\Billing\Stripe');
 //option 2
