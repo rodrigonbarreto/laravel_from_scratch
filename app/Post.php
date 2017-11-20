@@ -46,6 +46,11 @@ class Post extends Model
         }
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
     public static function archives()
     {
         return static::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
