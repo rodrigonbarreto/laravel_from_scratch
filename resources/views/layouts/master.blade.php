@@ -11,11 +11,14 @@
 <body>
 	<div id="app">
 		<section class="hero is-primary is-medium">
-
 			@include('partials.header')
-
 		</section>
 
+		@if($flash = session('message'))
+		<div class="alert alert-success" role="alert">
+				{{$flash}}
+		</div>
+		@endif
 		<section class="section">
 			<div class="container">
 				<div class="columns">

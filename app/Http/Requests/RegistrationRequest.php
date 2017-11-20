@@ -34,7 +34,6 @@ class RegistrationRequest extends FormRequest
 
     public function persist()
     {
-
         // Create and save the user
         $user = User::create([
             'name' => request('name'),
