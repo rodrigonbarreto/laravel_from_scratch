@@ -5,11 +5,11 @@
 </h1>
 
 <p class="subtitle">
-	By <a href="/author/{{ $post->user->id }}">{{ $post->user->name }}</a> |  
+	By <a href="/author/{{ $post->user->id }}">{{ $post->user->name }}</a> |
 	{{ $post->created_at->diffForHumans() }}</p>
 
 <div class="content">
 
 	{!! Markdown::convertToHtml($post->body) !!}
-	
+
 </div>

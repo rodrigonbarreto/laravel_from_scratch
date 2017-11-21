@@ -33,3 +33,11 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
         'body' => $faker->paragraph(),
     ];
 });
+
+
+$factory->define(App\Tag::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->sentence()
+    ];
+});
